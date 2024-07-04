@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::get('/', [PageController::class, "home"])->name("home");
+
+// Route::get('/path', [PageController::class, "metodo"])->name("nomerotta");
