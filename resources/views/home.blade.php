@@ -3,6 +3,6 @@
 @section('content')
     <h1>Studenti:</h1>
     @foreach ($treni as $singoloTreno)
-        <p>{{ $singoloTreno->Azienda }} {{ $singoloTreno->Cancellato }}</p>
+        <p>{{ $singoloTreno->azienda }} {{ $singoloTreno->orario_di_partenza }}</p>
     @endforeach
 @endsection
