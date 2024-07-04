@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Treni:</h1>
 
-<h1>Movie:</h1>
-@foreach ($movies as $movie)
 
-<p>{{$movie -> title}}</p>
-    
-@endforeach
+    @endforeach
 @endsection
