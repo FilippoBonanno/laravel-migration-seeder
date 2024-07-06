@@ -77,10 +77,60 @@ Questo git-template fornisce lo scaffold di una web application realizzata con L
 - Ricontrollando i dati del nostro seeder , pushamo il seeder:
 	```bash
 	php artisan db:seed --class=GamesTableSeeder
-	in questo modo specificando il seedere, oppure predisporre il seeder generale DatabaseSeeder in modo tale che li pushi lui tutti quelli che gli dai
+	in questo modo specificando il seedere, oppure predisporre il seeder generale DatabaseSeeder 
+	in modo tale che li pushi lui tutti quelli che gli dai
 	e quindi si pusha senza specificare il seeder
 	```
-- 
+- Creiamo il nostro Controller standard:
+	```bash
+	php artisan make:controller PageController
+	Meglio se li mettiamo in una sottocartella Guest
+	```
+- Colleghiamo la nostra Route al Controller:
+	```bash
+	Route::get('/', [PageController::class, "home o index"])->name("home");
+	```
+- Modifichiamo il nostro Controller inserendo una funzione:
+	```bash
+	public function index()	{
+		// prendo i dati dal config
+		$dati = config("data");
+		// richiamo la vista
+		return view('home', $dati);
+	}
+	```
+- Adesso creiamo un Controller di tipo risorsa:
+	```bash
+	php artisan make:controller --resource GameController
+	// dal PageController gestiremo le pagine statiche come home e about
+	// invece con il nostro GameController gestiremo tutto ciò che riguarda
+	// i giochi: la lista , il singolo gioco , il dettaglio del gioco, la pagina di modifica
+	```
+- Usiamo il nostro controller resource creando un'altra rotta:
+	```bash
+	Route::resource('/games', GameController::class);
+	```
+- Questo controller avrà diverse chiamate con diverse functions,
+	carichiamo nel nostro metodo Get che si chiama index tutti i dati del nostro server e li mettiamo 
+	in un array associativo che li contiene:
+	```bash
+	$gameList = Game::all();
 
+	$data = [
+		"catalog" => $gameList
+	];
+
+	// stampiamo tutto in una vista 
+	return view("games.index", $data);
+	// games.index perchè ci troviamo dentro la cartella delle view games
+	```
+- 	Creiamo una nuova cartella nelle view che conterrà tutte le view dei nostri giochi
+	```bash
+	// una pag che li elenca in lista, una che da i dettagli e una per modificarli
+	// ad esempio la view per la lista 
+	index.blade.php
+	```
+- 
+	
 
 
