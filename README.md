@@ -50,7 +50,6 @@ Questo git-template fornisce lo scaffold di una web application realizzata con L
 - Colleghiamo il modello ad una tabella del DB creando una migration: 
 	```bash
 	php artisan make:migration create_games_table
-	```
 	in questo modo potremmo creare la struttura della nostra table
 	```
 - Pushiamo la nostra table con il comando:
