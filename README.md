@@ -42,17 +42,17 @@ Questo git-template fornisce lo scaffold di una web application realizzata con L
 	npm run dev
 	```
 - Puntare il browser all'indirizzo mostrato in terminale per controllare che tutto funzioni.
- 	```bash
+ 	```
 - Creiamo un Modello tramite un nuovo terminale con il comando:
 	```bash	
 	php artisan make:model Game
-	```bash
+	```
 - Colleghiamo il modello ad una tabella del DB creando una migration: 
 	```bash
 	php artisan make:migration create_games_table
-	```bash
+	```
 	in questo modo potremmo creare la struttura della nostra table
-	```bash
+	```
 - Pushiamo la nostra table con il comando:
 	```bash
 	php artisan migration
