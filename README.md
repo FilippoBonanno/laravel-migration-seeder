@@ -55,7 +55,32 @@ Questo git-template fornisce lo scaffold di una web application realizzata con L
 - Pushiamo la nostra table con il comando:
 	```bash
 	php artisan migration
-- 	
+	```
+- Adesso creiamo il nostro seeder per poter popolare la nostra table:
+	```bash
+	php artisan make:seeder GamesTableSeeder
+
+	Es; ("Si può anche usare un ciclo for")
+	$gioco = new Game();
+	$gioco->name = "Max Payne";
+	$gioco->price = 12.99;
+	$gioco->save();
+
+	ricordando di importare il Model gioco: 
+	use App\Models\Game;
+	```
+- Possiamo utilizzare Faker importandolo con:
+	```bash
+	use Faker\Generator as Faker; 
+	e nella funzione public inserire (Faker $faker)
+	```
+- Ricontrollando i dati del nostro seeder , pushamo il seeder:
+	```bash
+	php artisan db:seed --class=GamesTableSeeder
+	in questo modo specificando il seedere, oppure predisporre il seeder generale DatabaseSeeder in modo tale che li pushi lui tutti quelli che gli dai
+	e quindi si pusha senza specificare il seeder
+	```
+- 
 
 
 
