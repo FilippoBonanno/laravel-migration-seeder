@@ -130,7 +130,30 @@ Questo git-template fornisce lo scaffold di una web application realizzata con L
 	// ad esempio la view per la lista 
 	index.blade.php
 	```
-- 
-	
+- Nella nostra vista , ricordandoci di estendere il layout come nella home, iteriamo nel nostro array 
+	popolato dai dati presi dal DB:
+	```bash
+	@foreach ($catalog as $gioco)
+		<p> {{$gioco->name}} </p>
+	@endforeach
 
+	// Possiamo trasformare i componenti della lista in un link che porterà al singolo game cosi:
+	<p><a href="{{ route("games.show", $gioco->id) }}" {{$gioco->name}} </p>
+	```
+- Tornando nel nostro resource Controller creiamo una vista per il dettaglio del game , ma prima 
+	scriviamo nel function show del controller :
+	```bash
+	// carichiamo il singolo game definito dall'utente tramite l'id
+	// mettiamolo su una variabile e poi su un array associativo
+	// la function find cercherà il singolo game con l'id definito dall'utente
+	$gioco = Game::find($id);
+
+	$data = [
+		"game" => $gioco
+	];
+
+	return view("games.show", $data);
+	// e adesso creiamo la nostra view show che stampera il singolo gioco
+	```
+- 
 
